@@ -66,19 +66,21 @@ useEffect(() => {
 
 return (
     <StyledCharacter>
-        <h3>Profiles:</h3>
+        <h3>Profiles: <button onClick={close}>Close</button></h3>
+        
         {characterDetails && (
-          <>
-            {
-            characterDetails.map((list) => {
-                return <p key={list.created}> 
-                {list.name}, ({list.gender}), was born {list.birth_year}. He has a {list.hair_color} hair and {list.skin_color} in complexion. He has a {list.eye_color} eyes, height of {list.height}meters and body mass of {list.mass}kg. He has featured in {list.films.length} Star War movies.
-                </p>    
-             }) 
-            } 
-            <button onClick={close}>Close</button>
-          </>    
+       <>
+       {
+       characterDetails.map((list) => {
+           return <p key={list.created}> 
+           {list.name}, ({list.gender}), was born {list.birth_year}. He has a {list.hair_color} hair and {list.skin_color} in complexion. He has a {list.eye_color} eyes, height of {list.height}meters and body mass of {list.mass}kg. He has featured in {list.films.length} Star War movies.
+           </p>    
+        }) 
+       } 
+       <button onClick={close}>Close</button>
+       </>     
         )}  
       </StyledCharacter>
     );
-  }
+}
+
