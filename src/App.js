@@ -5,7 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const App = () => {
-  // const [navigation, setNavigation] = useState('');
+  const [characters, setCharacters] = useState([]);
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -18,6 +18,7 @@ const App = () => {
     axios
     .get(`https://swapi.dev/api/people`)
       .then(res => {
+        setCharacters(res.data)
        
         console.log(res.data)
       })
@@ -29,7 +30,11 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <Character/>
+      {
+        characters.map((chr) => {
+          return <Character key={chr.id} info={chr} />;
+        })
+      }
     </div>
     
   );
