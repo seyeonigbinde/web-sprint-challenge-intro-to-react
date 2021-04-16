@@ -1,12 +1,11 @@
 export default {
     primaryColor: '#ddd',
     secondaryColor: '#333',
-    tertiaryColor: '#21209c',
+    tertiaryColor: 'rgba(0, 0, 0, 0.4)',
     dangerColor: 'rgba(104, 104, 104, 0.8)',
     black: 'black',
     white: 'white',
-    breakPointMobile: '(max-width: 550px)',
-    fontFamily: 'Arial, Helvetica, sansSerif',
+    fontFamily: 'sansSerif',
     padding: {
         small: '6px',
         large: '12px'
