@@ -32,11 +32,21 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
 
+React is an open-source JavaScript library for building specifically single-page applications. React makes it painless to create interactive user interfaces. It helps in the development of large applications that have temporal data changes. The data in such applications is not static so it changes over time. It builds a simple engine called the virtual DOM that interacts with the actual DOM for us. 
+
 1. Describe component state.
+
+A component state is the one that state data, either as an object placed inside the constructor function or a function component that include the .useState function made available in the React. 
 
 1. Describe props.
 
+“Props” is a special keyword in React, which stands for properties and is being used for passing data from one component to another. Props allow components rendered in a stateful component to receive state data and once the data is set as props data, it is no longer a state data.
+
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+
+Side effects are things that can cause a component to return a different output for the same state and props. It is anything that affects something outside the scope of the function being executed. Fetching data from an API, timers and manually manipulating the DOM are all examples of side effects.
+
+Side effects are synced in to the React component by used the effect hook (.useEffect) which tells React that a component needs to run, or execute, some side effects. This hook takes two parameters. The first is a callback function and the second is a dependency array.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
