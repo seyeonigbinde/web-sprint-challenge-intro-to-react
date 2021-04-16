@@ -3,6 +3,7 @@ export default {
     secondaryColor: '#333',
     tertiaryColor: 'rgba(0, 0, 0, 0.4)',
     dangerColor: 'rgba(104, 104, 104, 0.8)',
+    randomColor: '#f9e0ae',
     black: 'black',
     white: 'white',
     fontFamily: 'sansSerif',

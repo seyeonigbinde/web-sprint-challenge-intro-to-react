@@ -4,22 +4,22 @@ import Character from "./components/Character";
 import axios from 'axios';
 import styled from 'styled-components';
 
+// Styled Components
 const StyledApp = styled.div`
 
-    width: 40%;
-    border: 20%;
-    margin: auto;
-    background-color: ${pr => pr.theme.tertiaryColor};
+      width: 40%;
+      border: 20%;
+      margin: auto;
+      background-color: ${pr => pr.theme.tertiaryColor};
 
   h1{
-    font-size: 2.8rem;
-    color: #f9e0ae;
-    
-    font-family: sans-serif;
+      font-size: 2.8rem;
+      color: ${pr => pr.theme.randomColor};;
+      font-family: sans-serif;
   }
   h2{
-        font-size: 2.0rem;
-        color: ${pr => pr.theme.white};
+      font-size: 2.0rem;
+      color: ${pr => pr.theme.white};
     }
 `
 const StyledProfile = styled.div`
@@ -27,9 +27,7 @@ const StyledProfile = styled.div`
       display: flex;
       justify-content: space-between;
       width: 80%;
-      border: 20%;
       border-radius: 2%;
-      border-color: red;
       align-items: center;
       margin: auto;
       margin-bottom: 0.5%;
@@ -56,6 +54,7 @@ const StyledProfile = styled.div`
             }
     }
 `
+// End of Styled Components
 
 const App = () => {
 
@@ -78,12 +77,13 @@ const App = () => {
      };
 
 //useEffect
+
+
 useEffect(() => {
   axios
-  .get(`https://swapi.dev/api/people`)
+  .get(`https://swapi.dev/api/people/`)
     .then(res => {
       setCharacters(res.data)
-      // setTitle(res.data.title)
       console.log(res.data)
     })
     .catch( err => {
@@ -94,9 +94,10 @@ useEffect(() => {
 const StarList = (props) => (
     <StyledProfile>
      <h2>{props.info.name}</h2> 
-      <button onClick={() => openDetails(props.info.created)}>See Profile</button>
+      <button onClick={() => openDetails(props.info.created)}>See Profiles Below</button>
     </StyledProfile>
 );
+
 
 return (
     <StyledApp>
@@ -106,8 +107,9 @@ return (
           return <StarList key={list.created} info={list} />;
         })
       }
-      {starsId && (
-        <Character stars={starsId} close={closeDetails} />
+      {
+        starsId && (
+           <Character stars={starsId} close={closeDetails} />
       )}
     </StyledApp>
 );

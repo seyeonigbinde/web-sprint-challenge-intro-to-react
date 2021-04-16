@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import axios from 'axios';
 
+// Styled Components
 const StyledCharacter = styled.div`
 
         width: 60%;
@@ -19,7 +20,7 @@ const StyledCharacter = styled.div`
     button{
         background-color: ${pr => pr.theme.primaryColor};
         color: ${pr => pr.theme.secondaryColor};
-        font-family: ${pr => pr.theme.fontFamily};
+        font-family: sans-serif;
         font-size: 1.2rem;
         padding: 1% 3%;
         border-radius: 10%;
@@ -30,20 +31,18 @@ const StyledCharacter = styled.div`
             color: ${pr => pr.theme.white};
             transition: all 1s ease-in-out;
             }
-     }   
+        }   
 
     h3{
         font-size: 1.3rem;
         color: ${pr => pr.theme.white};
-     }
+        }
 
     p{
         color: ${pr => pr.theme.white};
-     }
-
-
+        }
 `
-
+// End of Styled Components
 
 export default function Character (props) {
     const {stars, close } = props;
@@ -52,7 +51,7 @@ export default function Character (props) {
 //useEffect
 useEffect(() => {
   axios
-  .get(`https://swapi.dev/api/people`)
+  .get(`https://swapi.dev/api/people/`)
     .then(res => {
       setCharacterDetails(res.data)
       console.log(res.data)
@@ -61,27 +60,23 @@ useEffect(() => {
       console.log(err);
     })
 }, [stars])
-  
+
+
 return (
     <StyledCharacter>
-        <h3>Profile of {characterDetails.name}:</h3>
+        <h3>Profiles:</h3>
         {characterDetails && (
           <>
             {
             characterDetails.map((list) => {
-                return <p key={list.created}> {list.name}, ({list.gender}), was born {list.birth_year}. He has a {list.hair_color} hair and {list.skin_color} in complexion. He has a {list.eye_color} eyes, height of {list.height}meters and body mass of {list.mass}kg. 
-                </p>
-              
-            })
-        } 
-            {/* <ul>
-              {characterDetails.films.map((films) => (
-                <li key={films}>{films}</li>
-              ))}
-            </ul> */}
-          </>
-        )}
-        <button onClick={close}>Close</button>
+                return <p key={list.created}> 
+                {list.name}, ({list.gender}), was born {list.birth_year}. He has a {list.hair_color} hair and {list.skin_color} in complexion. He has a {list.eye_color} eyes, height of {list.height}meters and body mass of {list.mass}kg. He has featured in {list.films.length} Star War movies.
+                </p>    
+             }) 
+            } 
+            <button onClick={close}>Close</button>
+          </>    
+        )}  
       </StyledCharacter>
     );
   }
