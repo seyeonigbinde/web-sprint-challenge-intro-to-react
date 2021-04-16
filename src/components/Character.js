@@ -6,7 +6,7 @@ import axios from 'axios';
 // Styled Components
 const StyledCharacter = styled.div`
 
-        width: 60%;
+        width: 95%;
         border: 20%;
         border-radius: 2%;
         border-color: red;
@@ -45,10 +45,11 @@ const StyledCharacter = styled.div`
 // End of Styled Components
 
 export default function Character (props) {
-    const {stars, close } = props;
+    const {profile, close } = props;
     const [characterDetails, setCharacterDetails] = useState([]);
   
 //useEffect
+
 useEffect(() => {
   axios
   .get(`https://swapi.dev/api/people/`)
@@ -59,8 +60,9 @@ useEffect(() => {
     .catch( err => {
       console.log(err);
     })
-}, [stars])
+}, [profile])
 
+//Components
 
 return (
     <StyledCharacter>

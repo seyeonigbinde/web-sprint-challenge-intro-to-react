@@ -5,6 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 // Styled Components
+
 const StyledApp = styled.div`
 
       width: 40%;
@@ -58,8 +59,8 @@ const StyledProfile = styled.div`
 
 const App = () => {
 
-  const [characters, setCharacters] = useState([]);
-  const [starsId, setStarsId] = useState(null);
+  const [charactersList, setCharactersList] = useState([]);
+  const [charactersProfile, setCharactersProfile] = useState(null);
 
   //  Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -69,21 +70,20 @@ const App = () => {
   // sync up with, if any.
 
     const openDetails = (created) => {
-    setStarsId(created);
+    setCharactersProfile(created);
     };
 
     const closeDetails = () => {
-    setStarsId(null);
+    setCharactersProfile(null);
      };
 
 //useEffect
-
 
 useEffect(() => {
   axios
   .get(`https://swapi.dev/api/people/`)
     .then(res => {
-      setCharacters(res.data)
+      setCharactersList(res.data)
       console.log(res.data)
     })
     .catch( err => {
@@ -91,25 +91,26 @@ useEffect(() => {
     })
 }, [])
 
-const StarList = (props) => (
+const CharacterNames = (props) => (
     <StyledProfile>
      <h2>{props.info.name}</h2> 
       <button onClick={() => openDetails(props.info.created)}>See Profiles Below</button>
     </StyledProfile>
 );
 
+//Components
 
 return (
     <StyledApp>
       <h1>Star Wars Characters >></h1>
       {
-        characters.map((list) => {
-          return <StarList key={list.created} info={list} />;
+        charactersList.map((list) => {
+          return <CharacterNames key={list.created} info={list} />;
         })
       }
       {
-        starsId && (
-           <Character stars={starsId} close={closeDetails} />
+        charactersProfile && (
+           <Character profile={charactersProfile} close={closeDetails} />
       )}
     </StyledApp>
 );
